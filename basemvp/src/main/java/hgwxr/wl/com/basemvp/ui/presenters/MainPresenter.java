@@ -13,6 +13,7 @@ import hgwxr.wl.com.basemvp.ui.actions.IMainView;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -30,6 +31,57 @@ public class MainPresenter extends  BasePresenter<IMainView> {
     public void loadDataCaiPu(){
         if (mCaipuBase!=null){
               Observable.from(mCaipuBase.getTngou())
+                      .onBackpressureBuffer()
+                      .sample(1,TimeUnit.SECONDS)
+                      .doOnNext(new Action1<CaipuBase.TngouBean>() {
+                          @Override
+                          public void call(CaipuBase.TngouBean tngouBean) {
+                              Log.d(TAG, "call() called with: tngouBean = [" + tngouBean.toString() + "]");
+                          }
+                      }).subscribe();
+                     /* .observeOn(AndroidSchedulers.mainThread())
+                      .subscribe(new Subscriber<CaipuBase.TngouBean>() {
+                          @Override
+                          public void onCompleted() {
+                              Toast.makeText(DemoApp.getAppContext(),"complete",Toast.LENGTH_SHORT).show();
+                          }
+
+                          @Override
+                          public void onError(Throwable e) {
+
+                          }
+
+                          @Override
+                          public void onNext(CaipuBase.TngouBean tngouBean) {
+                              Log.d(TAG, "onNext() called with: tngouBean = [" + tngouBean.toString() + "]");
+                              mActionView.handleCaiPuTianGou(tngouBean);
+                          }
+                      });*/
+
+           /* Observable .from(mCaipuBase.getTngou())
+                    .toSortedList()
+                    .interval(2, TimeUnit.SECONDS)
+                   .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Long>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        CaipuBase.TngouBean tngouBean = mCaipuBase.getTngou().get(aLong.intValue());
+                        Log.d(TAG, "onNext() called with: tngouBean = [" + tngouBean.toString() + "]");
+                        mActionView.handleCaiPuTianGou(tngouBean);
+                    }
+                });
+*/
+             /* Observable.from(mCaipuBase.getTngou())
                       //.observeOn(AndroidSchedulers.mainThread())
                       .timeout(10,TimeUnit.SECONDS)
                       .subscribe(new Subscriber<CaipuBase.TngouBean>() {
@@ -48,7 +100,7 @@ public class MainPresenter extends  BasePresenter<IMainView> {
                               Log.d(TAG, "onNext() called with: tngouBean = [" + tngouBean.toString() + "]");
                               mActionView.handleCaiPuTianGou(tngouBean);
                           }
-                      });
+                      });*/
         }else{
         Observable<CaipuBase> caiPuBase = DataManager.getInstance().getmIServerApi().getCaiPuBase();
         caiPuBase.subscribeOn(Schedulers.io())
@@ -74,7 +126,7 @@ public class MainPresenter extends  BasePresenter<IMainView> {
                     @Override
                     public void onNext(CaipuBase.TngouBean tngouBean) {
                     //   if (mCaipuBase==null) {
-                           //mActionView.handleCaiPuTianGou(tngouBean);
+                           mActionView.handleCaiPuTianGou(tngouBean);
                            Log.d(TAG, "onNext() called with: tngouBean = [" + tngouBean + "]");
                       // }
                     }

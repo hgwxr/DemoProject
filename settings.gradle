@@ -1,1 +1,1 @@
-include ':app', ':task1', ':baselibs', ':basemvp'
+include ':app', ':task1', ':baselibs', ':basemvp', ':multitem'

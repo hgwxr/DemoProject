@@ -1,6 +1,11 @@
 package hgwxr.wl.com.basemvp.data.other;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
 import java.util.List;
+
+import hgwxr.wl.com.basemvp.BR;
 
 /**
  * @author wl
@@ -35,7 +40,7 @@ public class CaipuBase {
         this.tngou = tngou;
     }
 
-    public static class TngouBean {
+    public static class TngouBean  extends BaseObservable {
         /**
          * cookclass : 0
          * description : 美容
@@ -69,15 +74,16 @@ public class CaipuBase {
         public void setDescription(String description) {
             this.description = description;
         }
-
+        @Bindable
         public int getId() {
             return id;
         }
 
         public void setId(int id) {
             this.id = id;
+            notifyPropertyChanged(BR.id);
         }
-
+        @Bindable
         public String getKeywords() {
             return keywords;
         }
@@ -85,7 +91,7 @@ public class CaipuBase {
         public void setKeywords(String keywords) {
             this.keywords = keywords;
         }
-
+        @Bindable
         public String getName() {
             return name;
         }
@@ -93,7 +99,7 @@ public class CaipuBase {
         public void setName(String name) {
             this.name = name;
         }
-
+        @Bindable
         public int getSeq() {
             return seq;
         }
@@ -101,7 +107,7 @@ public class CaipuBase {
         public void setSeq(int seq) {
             this.seq = seq;
         }
-
+        @Bindable
         public String getTitle() {
             return title;
         }

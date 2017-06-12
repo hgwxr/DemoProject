@@ -2,7 +2,6 @@ package hgwxr.wl.com.baselibs.util;
 
 import android.annotation.SuppressLint;
 
-import com.blankj.utilcode.constant.MemoryConstants;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -17,6 +16,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import hgwxr.wl.com.baselibs.constant.MemoryConstants;
 
 /**
  * <pre>

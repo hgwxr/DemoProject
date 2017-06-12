@@ -1,6 +1,6 @@
 package hgwxr.wl.com.baselibs.util;
 
-import com.blankj.utilcode.constant.TimeConstants;
+import hgwxr.wl.com.baselibs.constant.TimeConstants;
 
 import java.text.DateFormat;
 import java.text.ParseException;

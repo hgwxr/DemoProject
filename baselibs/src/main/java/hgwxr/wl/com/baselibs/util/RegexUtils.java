@@ -1,11 +1,12 @@
 package hgwxr.wl.com.baselibs.util;
 
-import com.blankj.utilcode.constant.RegexConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import hgwxr.wl.com.baselibs.constant.RegexConstants;
 
 /**
  * <pre>

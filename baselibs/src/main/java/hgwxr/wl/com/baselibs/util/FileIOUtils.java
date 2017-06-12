@@ -1,6 +1,5 @@
 package hgwxr.wl.com.baselibs.util;
 
-import com.blankj.utilcode.constant.MemoryConstants;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -20,6 +19,8 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
+
+import hgwxr.wl.com.baselibs.constant.MemoryConstants;
 
 /**
  * <pre>
